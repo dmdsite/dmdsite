@@ -8,8 +8,8 @@ var indexRouter = require('./routes/index');
 var addRouter = require('./routes/add');
 var loginRouter = require('./routes/login');
 
+//db연결
 
-var db=require('./db/db');
 
 var mainRouter = require('./routes/main');
 // >>>>>>> 1b005fed76b30c5cd8e9fb69245a072b83dac566
@@ -34,17 +34,14 @@ app.use('/login', loginRouter);
 app.use('/index', indexRouter);
 app.use('/main', mainRouter);
 
-//db
-var userController=require('./db/user/userController');
-app.use('/user',userController);
 
 // catch 404 and forward to error handler
-app.use(function(req, res, next) {
+app.use(function (req, res, next) {
   next(createError(404));
 });
 
 // error handler
-app.use(function(err, req, res, next) {
+app.use(function (err, req, res, next) {
   // set locals, only providing error in development
   res.locals.message = err.message;
   res.locals.error = req.app.get('env') === 'development' ? err : {};
