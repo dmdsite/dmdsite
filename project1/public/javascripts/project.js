@@ -10,6 +10,7 @@ $(document).ready(function(){
       $("#services").click(function(){
         location.href = "/index";
       })
-      
+
+      $('')
     
 })
