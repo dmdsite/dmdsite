@@ -7,11 +7,18 @@ var logger = require('morgan');
 var indexRouter = require('./routes/index');
 var addRouter = require('./routes/add');
 var loginRouter = require('./routes/login');
+var mainRouter = require('./routes/main');
 
 //db연결
+var db=require('./db/db')
+
+//db crud 사용
+
+// var userController=require('./user/userController');
 
 
-var mainRouter = require('./routes/main');
+
+
 // >>>>>>> 1b005fed76b30c5cd8e9fb69245a072b83dac566
 
 
@@ -33,6 +40,8 @@ app.use('/add', addRouter);
 app.use('/login', loginRouter);
 app.use('/index', indexRouter);
 app.use('/main', mainRouter);
+
+
 
 
 // catch 404 and forward to error handler
