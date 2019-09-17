@@ -2,63 +2,103 @@ App = {
   web3Provider: null,
   contracts: {},
 
-  init: async function() {
-    // Load pets.
-    $.getJSON('../pets.json', function(data) {
-      var petsRow = $('#petsRow');
-      var petTemplate = $('#petTemplate');
+  init: function() {
+    // Load properties.
+    $.getJSON('../properties.json', function(data) {
+      var propertiesRow = $('#propertiesRow');
+      var propertyTemplate = $('#propertyTemplate');
 
       for (i = 0; i < data.length; i ++) {
-        petTemplate.find('.panel-title').text(data[i].name);
-        petTemplate.find('img').attr('src', data[i].picture);
-        petTemplate.find('.pet-breed').text(data[i].breed);
-        petTemplate.find('.pet-age').text(data[i].age);
-        petTemplate.find('.pet-location').text(data[i].location);
-        petTemplate.find('.btn-adopt').attr('data-id', data[i].id);
+        propertyTemplate.find('.panel-amount').text(data[i].amount);
+        propertyTemplate.find('img').attr('src', data[i].picture);
+        propertyTemplate.find('.property-address').text(data[i].address);
+        propertyTemplate.find('.property-bedrooms').text(data[i].bedrooms);
+        propertyTemplate.find('.property-location').text(data[i].location);
+        propertyTemplate.find('.btn-lease').attr('data-id', data[i].id);
 
-        petsRow.append(petTemplate.html());
+        propertiesRow.append(propertyTemplate.html());
       }
     });
 
-    return await App.initWeb3();
+    return App.initWeb3();
   },
 
-  initWeb3: async function() {
-    /*
-     * Replace me...
-     */
-
+  initWeb3: function() {
+    // Is there an injected web3 instance?
+    if (typeof web3 !== 'undefined') {
+      App.web3Provider = web3.currentProvider;
+    } else {
+      // If no injected web3 instance is detected, fall back to Ganache
+      App.web3Provider = new Web3.providers.HttpProvider('https://ropsten.infura.io/v3/705f6b3cb031480db5850868247ce87c');
+    }
+    web3 = new Web3(App.web3Provider);
     return App.initContract();
   },
 
   initContract: function() {
-    /*
-     * Replace me...
-     */
+    $.getJSON('LeaseProperty.json', function(data) {
+      // Get the necessary contract artifact file and instantiate it with truffle-contract
+      var LeasePropertyArtifact = data;
+      App.contracts.LeaseProperty = TruffleContract(LeasePropertyArtifact);
+
+      // Set the provider for our contract
+      App.contracts.LeaseProperty.setProvider(App.web3Provider);
+
+      // Use our contract to retrieve and mark the leased properties
+      return App.markLeased();
+    });
 
     return App.bindEvents();
   },
 
   bindEvents: function() {
-    $(document).on('click', '.btn-adopt', App.handleAdopt);
+    $(document).on('click', '.btn-lease', App.handleLease);
   },
 
-  markAdopted: function(adopters, account) {
-    /*
-     * Replace me...
-     */
+  markLeased: function(lessees, account) {
+    var leasePropertyInstance;
+
+    App.contracts.LeaseProperty.deployed().then(function(instance) {
+      leasePropertyInstance = instance;
+
+      return leasePropertyInstance.getLessees.call();
+    }).then(function(lessees) {
+      for (i = 0; i < lessees.length; i++) {
+        if (lessees[i] !== '0x0000000000000000000000000000000000000000') {
+          $('.panel-property').eq(i).find('button').text('Purchased').attr('disabled', true);
+        }
+      }
+    }).catch(function(err) {
+      console.log(err.message);
+    });
   },
 
-  handleAdopt: function(event) {
+  handleLease: function(event) {
     event.preventDefault();
 
-    var petId = parseInt($(event.target).data('id'));
+    var propertyId = parseInt($(event.target).data('id'));
 
-    /*
-     * Replace me...
-     */
+    var leasePropertyInstance;
+
+    web3.eth.getAccounts(function(error, accounts) {
+      if (error) {
+        console.log(error);
+      }
+
+      var account = accounts[0];
+      
+      App.contracts.LeaseProperty.deployed().then(function(instance) {
+        leasePropertyInstance = instance;
+
+        // Execute lease as a transaction by sending account
+        return leasePropertyInstance.lease(propertyId, {from: account});
+      }).then(function(result) {
+        return App.markLeased();
+      }).catch(function(err) {
+        console.log(err.message);
+      });
+    });
   }
-
 };
 
 $(function() {
