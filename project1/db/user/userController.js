@@ -7,8 +7,7 @@ router.use(bodyParser.urlencoded({
 }));
 
 var user=require('./user');
-
-router.posy// User 생성
+// User 생성
 router.post('/', function(req, res) {
     User.create( {
         name: req.body.name,
