@@ -55,16 +55,16 @@ App = {
     $(document).on('click', '.btn-lease', App.handleLease);
   },
 
-  markLeased: function(lessees, account) {
+  markLeased: function(leasees, account) {
     var leasePropertyInstance;
 
     App.contracts.LeaseProperty.deployed().then(function(instance) {
       leasePropertyInstance = instance;
 
       return leasePropertyInstance.getLessees.call();
-    }).then(function(lessees) {
-      for (i = 0; i < lessees.length; i++) {
-        if (lessees[i] !== '0x0000000000000000000000000000000000000000') {
+    }).then(function(leasees) {
+      for (i = 0; i < leasees.length; i++) {
+        if (leasees[i] !== '0x0000000000000000000000000000000000000000') {
           $('.panel-property').eq(i).find('button').text('Purchased').attr('disabled', true);
         }
       }
