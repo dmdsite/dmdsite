@@ -41,6 +41,7 @@ exports.create = function (req, res) {
                             return res.status(500).send("User 생성 실패");
                         }
                         res.status(200).send(user);
+                        alert("회원가입 완료")
                         console.log("생성성공")
             
                     })
