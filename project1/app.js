@@ -8,6 +8,7 @@ var indexRouter = require('./routes/index');
 var addRouter = require('./routes/add');
 var loginRouter = require('./routes/login');
 var mainRouter = require('./routes/main');
+var dappRouter = require('./routes/dapp');
 
 //db연결
 var db=require('./db/db')
@@ -39,7 +40,7 @@ app.use('/add', addRouter);
 app.use('/login', loginRouter);
 app.use('/index', indexRouter);
 app.use('/main', mainRouter);
-
+app.use('/dapp', dappRouter);
 
 
 // setTimeout(function(){
