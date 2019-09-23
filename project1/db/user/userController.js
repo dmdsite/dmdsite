@@ -2,9 +2,8 @@ var express = require('express');
 var router = express.Router();
 var bodyparser = require('body-parser');
 var mongoose = require('mongoose');
-// import alert from 'alert-node'
-var alert=require('node-popup')
-// var alert = require('alert-node')
+// var alert=require('node-popup')
+var alert = require('alert-node')
 
 
 router.use(bodyparser.urlencoded({ extended: true }));
@@ -50,7 +49,7 @@ exports.create = function (req, res) {
             }
             else {
                 
-                alert.alert("이미 등록된 id입니다")
+                alert("이미 등록된 id입니다")
 
             }
         }
