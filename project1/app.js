@@ -13,8 +13,7 @@ var mainRouter = require('./routes/main');
 var db=require('./db/db')
 
 //db crud 사용
-
-// var userController=require('./user/userController');
+var userController=require('./db/user/userController');
 
 
 
@@ -43,6 +42,9 @@ app.use('/main', mainRouter);
 
 
 
+// setTimeout(function(){
+  app.post('/create',userController.create);
+// },1000);
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
