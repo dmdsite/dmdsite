@@ -61,7 +61,7 @@ buyCoke=()=>{
 console.log("##성공")
 this.state.storeInstance.BuyCoke({
 from:this.state.myAccount,
-value:this.state.web3.toWei(0.1,"ether")
+value:this.state.web3.toWei(0.01,"ether")
    })
  }
 
