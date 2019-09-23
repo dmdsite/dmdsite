@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 $(document).ready(function(){
     
    
@@ -9,21 +8,7 @@ $(document).ready(function(){
           location.href = "/login";
       })
       
-=======
-$(document).ready(function () {
-
-
-  $("#signup").click(function () {
-    location.href = "/add";
-  })
-  $("#signin").click(function () {
-    location.href = "/login";
-  })
-  $("#services").click(function () {
-    location.href = "/index";
-  })
-
-  $('.form-signin button').click(function () {
+    $('.form-signin button').click(function () {
     $.ajax('/create', {
       'method': 'POST',
       'data': {
@@ -37,6 +22,4 @@ $(document).ready(function () {
     // var password = $('#inputEthAddress').val()
 
   })
->>>>>>> 04630aeb38d7888465409ba12cc3eefb2424c936
-
 })
