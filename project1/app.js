@@ -13,9 +13,6 @@ var dappRouter = require('./routes/dapp');
 //db연결
 var db=require('./db/db')
 
-//db crud 사용
-
-// var userController=require('./user/userController');
 
 
 
@@ -43,7 +40,10 @@ app.use('/index', indexRouter);
 app.use('/main', mainRouter);
 app.use('/dapp', dappRouter);
 
+//db crud 사용
+var userController=require('./db/user/userController');
 
+  app.post('/create',userController.create);
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
