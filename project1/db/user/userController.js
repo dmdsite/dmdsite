@@ -24,14 +24,18 @@ var userSchema = new mongoose.Schema({
 })
 var User = mongoose.model('User', userSchema);
 exports.create = function (req, res) {
-
+    
+    // if(User.find({
+    //     'id' :req.body.id
+    // }).count()!=0){
+    //     console.log(asdf);
+    // }
     User.create({
         Eth_address: req.body.Eth_Address,
         id: req.body.id,
         password: req.body.password
     },
     //중복 확인후 있으면 데이터 추가
-    {upert : true},
         function (err, user) {
             if (err) return res.status(500).send("User 생성 실패");
             res.status(200).send(user);
