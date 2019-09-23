@@ -1,17 +1,14 @@
-$(document).ready(function () {
-
-
-  $("#signup").click(function () {
-    location.href = "/add";
-  })
-  $("#signin").click(function () {
-    location.href = "/login";
-  })
-  $("#services").click(function () {
-    location.href = "/index";
-  })
-
-  $('.form-signin button').click(function () {
+$(document).ready(function(){
+    
+   
+      $("#signup").click(function(){
+          location.href = "/add";
+      })
+      $("#signin").click(function(){
+          location.href = "/login";
+      })
+      
+    $('.form-signin button').click(function () {
     $.ajax('/create', {
       'method': 'POST',
       'data': {
@@ -25,5 +22,4 @@ $(document).ready(function () {
     // var password = $('#inputEthAddress').val()
 
   })
-
 })
