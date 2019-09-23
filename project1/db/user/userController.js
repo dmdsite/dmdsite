@@ -47,7 +47,7 @@ exports.create = function (req, res) {
                     })
             }
             else{
-                alert("이미 등록된 id입니다")
+                alert("이미 등록된 id입니다",'window')
             }
         }
     })
