@@ -15,4 +15,10 @@ contract LeaseProperty {
     function getLessees() public view returns (address[16]) {
         return lessees;
     }
+
+    function resetAsset(uint propertyId) public returns (uint) {
+        require(propertyId >= 0 && propertyId <= 15);
+        lessees[propertyId] = 0x0000000000000000000000000000000000000000;
+        return propertyId;
+    }
 }

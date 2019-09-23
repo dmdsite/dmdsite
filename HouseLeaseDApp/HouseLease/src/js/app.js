@@ -60,12 +60,11 @@ App = {
 
     App.contracts.LeaseProperty.deployed().then(function(instance) {
       leasePropertyInstance = instance;
-
       return leasePropertyInstance.getLessees.call();
     }).then(function(lessees) {
       for (i = 0; i < lessees.length; i++) {
         if (lessees[i] !== '0x0000000000000000000000000000000000000000') {
-          $('.panel-property').eq(i).find('button').text('Purchased').attr('disabled', true);
+          $('.panel-property').eq(i).find('.btn-lease').text('Purchased').attr('disabled', true);
         }
       }
     }).catch(function(err) {
@@ -100,7 +99,16 @@ App = {
     });
   }
 };
-
+           
+$('.btn-reset').click(function(){
+  $('.btn-lease').text('Lease').attr('disabled',false).val('');
+});   
+/*reset 버튼을 누르면 address와 Purchased버튼 초기화 하고 싶음
+  프론트에서만 reset된 것처럼 보임 ㅠㅠ
+  LeaseProperty.sol 중 resetAsset 함수를 사용하여 address를 0x0000000000000000000000000000000000000000로 바꿔야 함
+  markReset함수와 handleReset함수를 만들어 resetAsset 함수를 불러와야 함
+  web3는 필요없다고 생각함
+*/
 $(function() {
   $(window).load(function() {
     App.init();
