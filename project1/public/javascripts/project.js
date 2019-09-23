@@ -7,9 +7,7 @@ $(document).ready(function(){
       $("#signin").click(function(){
           location.href = "/login";
       })
-      $("#services").click(function(){
-        location.href = "/index";
-      })
+      
 
       $('.form-signin button').click(function(){
         var Eth_Address=$('#inputEthAddress').val()
