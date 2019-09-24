@@ -7,6 +7,9 @@ $(document).ready(function(){
       $("#signin").click(function(){
           location.href = "/login";
       })
+      $("#again").click(function(){
+        location.href = "/add";
+      })
       
     $('.form-signin button').click(function () {
     $.ajax('/create', {
