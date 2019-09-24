@@ -58,7 +58,8 @@ exports.create = function (req, res) {
                 })
             }
             else {
-                // alert("이미 등록된 id입니다")
+                res.redirect("http://naver.com");
+                alert("이미 등록된 id입니다")
 
             }
         }
