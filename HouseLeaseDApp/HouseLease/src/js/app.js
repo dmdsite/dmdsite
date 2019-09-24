@@ -1,7 +1,7 @@
 App = {
   web3Provider: null,
   contracts: {},
-
+  
   init: function() {
     // Load properties.
     $.getJSON('../properties.json', function(data) {
@@ -55,9 +55,9 @@ App = {
     $(document).on('click', '.btn-lease', App.handleLease);
   },
 
-  resetEvents:function(){
-    $(document).on('click','.btn-reset', App.handleReset);
-  },
+  // resetEvents:function(){
+  //   $(document).on('click','.btn-reset', App.handleReset);
+  // },
 
   markLeased: function(lessees, account) {
     var leasePropertyInstance;
@@ -95,7 +95,6 @@ App = {
   },
 
   handleLease: function(event) {
-    console.log("!23123");
     event.preventDefault();
 
     var propertyId = parseInt($(event.target).data('id'));
@@ -111,7 +110,7 @@ App = {
       
       App.contracts.LeaseProperty.deployed().then(function(instance) {
         leasePropertyInstance = instance;
-
+        
         // Execute lease as a transaction by sending account
         return leasePropertyInstance.lease(propertyId, {from: account});
       }).then(function(result) {
@@ -121,15 +120,16 @@ App = {
       });
     });
   },
-
+  
   handleReset:function(event){
+    console.log(123);
     event.preventDefault();
-
-    var propertyId = parseInt($(event.target).data('id'));
-
     var leasePropertyInstance;
-
+    
+    
     web3.eth.getAccounts(function(error, accounts) {
+      var account = accounts[0];
+      console.log(account);
       if (error) {
         console.log(error);
       }
@@ -139,8 +139,9 @@ App = {
         leasePropertyInstance = instance;
 
         // Execute lease as a transaction by sending account
-        return leasePropertyInstance.resetAsset(propertyId, {from: account});
-      }).then(function(result) {
+        return leasePropertyInstance.resetAsset({from: account,'gas':30000});
+      })
+      .then(function(result) {
         return App.markReset();
       }).catch(function(err) {
         console.log(err.message);
@@ -148,6 +149,8 @@ App = {
     });
   }
 };
+// $(document).on('click','.btn-reset', console.log(123));
+$(".btn-reset").click(App.handleReset)
 
 
 
@@ -159,6 +162,7 @@ App = {
   markReset함수와 handleReset함수를 만들어 resetAsset 함수를 불러와야 함
   web3는 필요없다고 생각함
 */
+
 $(function() {
   $(window).load(function() {
     App.init();
