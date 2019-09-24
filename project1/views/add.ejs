@@ -10,49 +10,53 @@
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
         <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
-        <script src="/javascripts/project.js"></script> 
+        <script src="/javascripts/project.js"></script>
 </head>
 
 <body>
+  <p>  <div class="container">
+ 
 
-        <div class="container">
+     
                 <div class="row">
                   <div class="col-lg-10 col-xl-9 mx-auto">
                     <div class="card card-signin flex-row my-5">
                       <div class="card-img-left d-none d-md-flex">
-                         <!-- Background image for card set in CSS! -->
+                     
                       </div>
                       <div class="card-body">
                         <h5 class="card-title text-center">Sign Up</h5>
                         <form class="form-signin">
                           <div class="form-label-group">
                             <input type="text" id="inputEthAddress" class="form-control" placeholder="ETH_Address" required autofocus>
-                            <label for="inputEthAddress">Eth_address</label>
+                            <label for="inputEthAddress">Eth_Address</label>
                           </div>
+
             
                           <div class="form-label-group">
-                            <input type="text" id="inputId" class="form-control" placeholder="ID" required>
+                            <input type="text" id="inputId" class="form-control" placeholder="ID" required autofocus>
                             <label for="inputId">ID</label>
                           </div>
                           
-                          <hr>
+                          
             
                           <div class="form-label-group">
+                            
                             <input type="password" id="password" class="form-control" placeholder="password" required>
                             <label for="password">Password</label>
                           </div>
                           
-                          <div class="form-label-group">
+                          <div class="form-label-group"> 
+                            
                             <input type="password" id="confirm_Password" class="form-control" placeholder="confirm_Password" required>
                             <label for="confirm_Password">Confirm password</label>
                           </div>
-            
-                          <button class="btn btn-lg btn-primary btn-block text-uppercase" type="submit" id="signup">Sign Up</button>
+                          <div id="showErrorpassword"></div>
+                          <button class="btn btn-lg btn-primary btn-block text-uppercase" type="submit" id="confirm">Sign Up</button>
                           </form>
-                          
                           <hr class="my-4">
-                          
                       </div>
+                      
                     </div>
                   </div>
                 
@@ -63,7 +67,9 @@
         </div>
       </div>
     </div>
+  </p>
   </div>
+ 
 </body>
 
 </html>
