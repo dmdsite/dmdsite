@@ -42,7 +42,6 @@ exports.create = function (req, res) {
         let salt = Math.round((new Date().valueOf() * Math.random())) + "";
         let hashPassword = crypto.createHash("sha512").update(req.body.password + salt).digest('hex');
         if (data == "") {
-            console.log(salt);
             User.create({
                 Eth_Address: req.body.Eth_Address,
                 id: req.body.id,
