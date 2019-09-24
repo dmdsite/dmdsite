@@ -42,15 +42,16 @@ exports.create = function (req, res) {
         let salt = Math.round((new Date().valueOf() * Math.random())) + "";
         let hashPassword = crypto.createHash("sha512").update(req.body.password + salt).digest('hex');
         if (data == "") {
+            console.log(salt);
             User.create({
                 Eth_Address: req.body.Eth_Address,
                 id: req.body.id,
-                password: hashPassword,
+                passwoCrd: hashPassword,
                 salt: salt
             }, function (err, user) {
                 if (err) {
                     return res.status(500).send("User 생성 실패");
-                } a
+                }
                 res.status(200).send(user);
                 alert("회원가입 완료")
                 console.log("생성성공")
@@ -58,7 +59,11 @@ exports.create = function (req, res) {
             })
         }
         else {
+            console.log(213423);
             // return res.redirect('/sign_up_fail');
+            // console.log(res.redirect('http://naver.com'));
+            // return res.redirect('http://naver.com');
+            
             // alert("이미 등록된 id입니다")
         }
     })
