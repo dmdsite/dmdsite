@@ -139,7 +139,7 @@ App = {
         leasePropertyInstance = instance;
 
         // Execute lease as a transaction by sending account
-        return leasePropertyInstance.resetAsset({from: account,'gas':30000});
+        return leasePropertyInstance.resetAsset({from: account,'gas':250000});
       })
       .then(function(result) {
         return App.markReset();
