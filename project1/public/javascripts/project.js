@@ -10,7 +10,7 @@ $(document).ready(function(){
       $("#again").click(function(){
         location.href = "/add";
       })
-
+     
       
     $('.form-signin button').click(function () {
     $.ajax('/create', {
