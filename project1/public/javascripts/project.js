@@ -13,6 +13,12 @@ $(document).ready(function(){
 
       
     $('.form-signin button').click(function () {
+      if($('#password').val()!=$('#confirm_Password').val()){
+        window.alert("passwords are not matching")
+        return;
+      }
+
+
     $.ajax('/create', {
       'method': 'POST',
       'data': {
