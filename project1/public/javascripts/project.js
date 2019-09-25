@@ -25,8 +25,16 @@ $(document).ready(function(){
         'Eth_Address': $('#inputEthAddress').val(),
         'id': $('#inputId').val(),
         'password': $('#inputPassword').val()
-          }
+          },
+      'error': function(err){
+        console.log(err);
+        console.log(123);
+      },
+      'success':function(result){
+        console.log(result);
+      }
     })
+
     // var Eth_Address = $('#inputEthAddress').val()
     // var id = $('#inputEthAddress').val()
     // var password = $('#inputEthAddress').val()

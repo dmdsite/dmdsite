@@ -13,7 +13,6 @@ router.use(bodyparser.urlencoded({ extended: true }));
 var userSchema = new mongoose.Schema({
     Eth_Address: {
         type: String,
-        unique: true,
         required: true
     },
     id: {
@@ -45,13 +44,16 @@ exports.create = function (req, res) {
                     password: hashPassword,
                     salt: salt
                 }, function (err, user) {
+                    if(err) {
+                        console.log(err);
+                        return;
+                    }
                     console.log(user);
                     console.log("생성성공")
 
                 })
             }
-            else {
-                res.redirect('http://naver.com');
+            else{
             }
         }
     })
