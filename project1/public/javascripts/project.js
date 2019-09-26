@@ -30,7 +30,6 @@ $(document).ready(function () {
         console.log(err);
         console.log(123);
       },
-      
       'success' : function (data) {
         console.log(data);
         if (!data.check)
