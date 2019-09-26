@@ -36,11 +36,10 @@ $(document).ready(function () {
         console.log(err);
       },
       'success' : function (data) {
-
         console.log(data);
-        if (!data.check)
+         if (!data.check)
           alert("We alreay have this ID. Please try the other one.")
-        else{
+         else{
           console.log("성공");
           alert("가입 성공");
           location.href="/login";
