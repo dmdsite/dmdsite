@@ -122,7 +122,6 @@ App = {
   },
   
   handleReset:function(event){
-    console.log(123);
     event.preventDefault();
     var leasePropertyInstance;
     
@@ -141,6 +140,11 @@ App = {
         // Execute lease as a transaction by sending account
         return leasePropertyInstance.resetAsset({from: account,'gas':30000});
       })
+      .then(function(result) {
+        return App.markReset();
+      }).catch(function(err) {
+        console.log(err.message);
+      });
     });
   }
 };
