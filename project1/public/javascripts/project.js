@@ -10,14 +10,20 @@ $(document).ready(function () {
   $("#again").click(function () {
     location.href = "/add";
   })
+
  $('.form-signin button').click(function () {
     if ($('#password').val()!=$('#confirm_Password').val()) {
       window.alert("passwords are not matching!!!!!!!")
       return;
     }
+    else if($('#password').val()=="" || $('#inputId').val()=="" || $('#Eth_Address').val()==""){
+            window.alert("빈 칸을 다 채우세요")
+      return;
+    }
 
 
-     event.preventDefault();
+    event.preventDefault();
+
 
     $.ajax('/create', {
       'method': 'POST',
@@ -31,6 +37,7 @@ $(document).ready(function () {
         console.log(123);
       },
       'success' : function (data) {
+
         console.log(data);
         if (!data.check)
           alert("We alreay have this ID. Please try the other one.")
@@ -43,5 +50,9 @@ $(document).ready(function () {
     // var password = $('#inputEthAddress').val()
 
   })
+
   })
+
+
+
 
