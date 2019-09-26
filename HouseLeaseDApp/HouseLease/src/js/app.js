@@ -122,7 +122,6 @@ App = {
   },
   
   handleReset:function(event){
-    console.log(123);
     event.preventDefault();
     var leasePropertyInstance;
     
