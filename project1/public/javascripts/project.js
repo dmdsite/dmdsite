@@ -11,7 +11,7 @@ $(document).ready(function () {
     location.href = "/add";
   })
 
- $('.form-signin button').click(function () {
+ $('.form-signup button').click(function () {
     if ($('#password').val()!=$('#confirm_Password').val()) {
       window.alert("passwords are not matching!!!!!!!")
       return;
