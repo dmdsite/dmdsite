@@ -42,7 +42,7 @@ $(document).ready(function () {
         else{
           console.log("성공");
           alert("가입 성공");
-          location.href="/main";
+          location.href="/login";
         }
       },
 
