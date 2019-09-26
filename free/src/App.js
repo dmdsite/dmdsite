@@ -77,7 +77,7 @@ render() {
 return (
 <div>
 <h2>우진이가 좋아하는 사이다 구매 페이지</h2>
-<img src={logo} className="App-logo" alt="logo" width="" height="250" alt="" />
+<img src={logo} className="App-logo" alt="logo" width="" height="250" />
 <div>사이다 : <button onClick={this.buyCoke}>구매하기</button></div>
 <div>나의 사이다 개수 : {this.state.myCokeNum} <button onClick={this.getMyCoke}>갱신하기</button> </div> 
 </div>
