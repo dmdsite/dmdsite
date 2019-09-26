@@ -17,7 +17,7 @@ $(document).ready(function () {
       return;
     }
     else if($('#password').val()=="" || $('#inputId').val()=="" || $('#Eth_Address').val()==""){
-            window.alert("빈 칸을 다 채우세요")
+      window.alert("You still have empty space.")
       return;
     }
 
