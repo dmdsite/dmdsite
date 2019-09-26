@@ -54,7 +54,6 @@ exports.create = function (req, res) {
                 })
             }
             else{
-                res.send({check:false});
             }
         }
     })
