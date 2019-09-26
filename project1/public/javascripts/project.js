@@ -11,55 +11,42 @@ $(document).ready(function () {
     location.href = "/add";
   })
 
-
-
-
-  $('.form-signin button').click(function () {
-    if ($('#password').val() != $('#confirm_Password').val()) {
-      window.alert("passwords are not matching")
+ $('.form-signup button').click(function () {
+    if ($('#password').val()!=$('#confirm_Password').val()) {
+      window.alert("passwords are not matching!!!!!!!")
+      return;
+    }
+    else if($('#password').val()=="" || $('#inputId').val()=="" || $('#Eth_Address').val()==""){
+      window.alert("You still have empty space.")
       return;
     }
 
-<<<<<<< HEAD
-
-      
-    $('.form-signin button').click(function () {
-      if($('#password').val()!=$('#confirm_Password').val()){
-        window.alert("passwords are not matching")
-        return;
-      }
-
-
-
-=======
 
     event.preventDefault();
->>>>>>> 1aeed828227a25c41c7f1b531384c236cc182801
+
+
     $.ajax('/create', {
       'method': 'POST',
       'data': {
         'Eth_Address': $('#inputEthAddress').val(),
         'id': $('#inputId').val(),
         'password': $('#inputPassword').val()
-<<<<<<< HEAD
-
-          },
+       },
       'error': function(err){
         console.log(err);
-        console.log(123);
       },
-      'success':function(result){
-        console.log(result);
+      'success' : function (data) {
 
-      }
-=======
-      },
-      'success': function (data) {
         console.log(data);
         if (!data.check)
-          alert("이미 등록된 id입니다")
+          alert("We alreay have this ID. Please try the other one.")
+        else{
+          console.log("성공");
+          alert("가입 성공");
+          location.href="/login";
+        }
       },
->>>>>>> 1aeed828227a25c41c7f1b531384c236cc182801
+
     })
 
     // var Eth_Address = $('#inputEthAddress').val()
@@ -67,5 +54,9 @@ $(document).ready(function () {
     // var password = $('#inputEthAddress').val()
 
   })
+
   })
-})
+
+
+
+
