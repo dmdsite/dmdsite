@@ -18,8 +18,7 @@ $(document).ready(function () {
       return;
     }
 
-<<<<<<< HEAD
-=======
+
       
     $('.form-signin button').click(function () {
       if($('#password').val()!=$('#confirm_Password').val()){
@@ -28,15 +27,14 @@ $(document).ready(function () {
       }
 
 
->>>>>>> f4efbfc1319e1b14822906e48ea4c7f95b884ef1
+
     $.ajax('/create', {
       'method': 'POST',
       'data': {
         'Eth_Address': $('#inputEthAddress').val(),
         'id': $('#inputId').val(),
         'password': $('#inputPassword').val()
-<<<<<<< HEAD
-=======
+
           },
       'error': function(err){
         console.log(err);
@@ -44,7 +42,7 @@ $(document).ready(function () {
       },
       'success':function(result){
         console.log(result);
->>>>>>> f4efbfc1319e1b14822906e48ea4c7f95b884ef1
+
       }
     })
 
@@ -52,5 +50,6 @@ $(document).ready(function () {
     // var id = $('#inputEthAddress').val()
     // var password = $('#inputEthAddress').val()
 
+  })
   })
 })
