@@ -3,6 +3,8 @@ var express = require('express');
 var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
+var session=require('express-session')
+var passport=require('passport')
 
 
 var indexRouter = require('./routes/index');
@@ -29,6 +31,9 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
+app.use(session({secret:'secret',resave:true,saveUninitialized:false}));
+app.use(passport.initialize());
+app.use(passport.session());
 
 //Router
 app.use('/', mainRouter);
@@ -43,6 +48,7 @@ app.use('/sign_up_fail', sign_up_fail_Router);
 var userController=require('./db/user/userController');
 
 app.post('/create',userController.create);
+app.post('/sign_in',userController.sign_in)
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
