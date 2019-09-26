@@ -10,19 +10,20 @@ $(document).ready(function () {
   $("#again").click(function () {
     location.href = "/add";
   })
-  $('.form-signup button').click(function () {
-    if ($('#password').val() != $('#confirm_Password').val()) {
+
+ $('.form-signin button').click(function () {
+    if ($('#password').val()!=$('#confirm_Password').val()) {
       window.alert("passwords are not matching!!!!!!!")
       return;
     }
     else if($('#password').val()=="" || $('#inputId').val()=="" || $('#Eth_Address').val()==""){
-
-      window.alert("빈 칸을 다 채우세요")
+            window.alert("빈 칸을 다 채우세요")
       return;
     }
 
 
     event.preventDefault();
+
 
     $.ajax('/create', {
       'method': 'POST',
@@ -30,12 +31,12 @@ $(document).ready(function () {
         'Eth_Address': $('#inputEthAddress').val(),
         'id': $('#inputId').val(),
         'password': $('#inputPassword').val()
-      },
-      'error': function (err) {
+       },
+      'error': function(err){
         console.log(err);
       },
+      'success' : function (data) {
 
-      'success': function (data) {
         console.log(data);
         if (!data.check)
           alert("We alreay have this ID. Please try the other one.")
@@ -53,4 +54,9 @@ $(document).ready(function () {
     // var password = $('#inputEthAddress').val()
 
   })
-})
+
+  })
+
+
+
+
