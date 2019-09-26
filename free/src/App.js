@@ -75,9 +75,10 @@ console.log("사이다 갯수 " + this.state.myCokeNum +  "   " + result );
 render() {
 return (
 <div>
-<h3>우진이가 좋아하는 사이다 구매 페이지</h3>
-<div>사이다 : <button onClick={this.buyCoke}>구매하기</button></div>
-<div>나의 사이다 개수 : {this.state.myCokeNum} <button onClick={this.getMyCoke}>갱신하기</button> </div> 
+<h3>Sprite 구매 page</h3>
+<div>Sprite : <button onClick={this.buyCoke}>구매하기</button></div>
+<div>나의 Sprite 개수 : {this.state.myCokeNum} <button onClick={this.getMyCoke}>갱신하기</button> </div> 
+<div>cf. 메타마스크 rinkeby 로 연동해주세요^^</div>
 </div>
    );
  }
