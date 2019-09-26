@@ -17,6 +17,9 @@
     "mongodb": "^3.3.2",
     "mongoose": "^5.7.0",
     "morgan": "~1.9.1",
-    "node-popup": "^0.1.14"
+    "node-popup": "^0.1.14",
+    "passport": "^0.4.0",
+    "passport-local": "^1.0.0",
+    "passport-local-mongoose": "^5.0.1"
   }
 }
