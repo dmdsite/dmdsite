@@ -69,7 +69,7 @@ value:this.state.web3.toWei(0.01,"ether")
 getMyCoke=()=>{
 this.state.storeInstance.GetMyCokeNum().then(result=>{
 this.setState({myCokeNum: result.toNumber()});
-console.log("사이다 갯수 " + this.state.myCokeNum +  "   " + result );
+console.log("사이다 개수 " + this.state.myCokeNum +  "   " + result );
    });
  }
 
