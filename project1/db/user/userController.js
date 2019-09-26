@@ -3,6 +3,7 @@ var router = express.Router();
 var bodyparser = require('body-parser');
 var mongoose = require('mongoose');
 var crypto = require('crypto');
+var passportLocalMongoose=require("passport-local-mongoose");
 
 
 
@@ -60,5 +61,9 @@ exports.create = function (req, res) {
         }
     })
     
+}
+
+exports.passport=function(req,res){
+
 }
 
