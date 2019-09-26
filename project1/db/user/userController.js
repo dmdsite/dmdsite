@@ -50,6 +50,7 @@ exports.create = function (req, res) {
                     }
                     console.log(user);
                     console.log("생성성공")
+                    res.send({check:true});
 
                 })
             }

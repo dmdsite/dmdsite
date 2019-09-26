@@ -33,13 +33,17 @@ $(document).ready(function () {
       },
       'error': function (err) {
         console.log(err);
-        console.log(123);
       },
 
       'success': function (data) {
         console.log(data);
         if (!data.check)
           alert("We alreay have this ID. Please try the other one.")
+        else{
+          console.log("성공");
+          alert("가입 성공");
+          location.href="/main";
+        }
       },
 
     })
