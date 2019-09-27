@@ -48,6 +48,7 @@ $(document).ready(function () {
       return;
     }
 
+    
 
     event.preventDefault();
     $.ajax('/create', {
