@@ -68,13 +68,15 @@ exports.sign_in = function (req, res) {
     User.findOne({
         'id': req.body.id,
     }, function (err, data) {
-        if (data == "") {
+        if(err) {
+            res.send({check:false})
+        }
+        if (data == null) {
             res.send({ check: false })
         }
         else {
+            console.log(data);
             let hashPassword = crypto.createHash("sha512").update(req.body.password + data.salt+"").digest('hex');
-            console.log(data.salt)
-            console.log(hashPassword)
             if (data.password == hashPassword) {
                 res.send({ check: true })
                 console.log(data.salt);
