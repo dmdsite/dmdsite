@@ -3,7 +3,7 @@ import React, { Component } from 'react'
 //import Store from "./contracts/Store_ropsten.json";
 import Store from "./contracts/Store.json";
 import getWeb3 from './utils/getWeb3';
-import logo from './cyder.jpg';
+import logo from './sprite_logo2.jpg';
 
 class App extends Component {
 constructor(props) {
@@ -69,17 +69,19 @@ value:this.state.web3.toWei(0.01,"ether")
 getMyCoke=()=>{
 this.state.storeInstance.GetMyCokeNum().then(result=>{
 this.setState({myCokeNum: result.toNumber()});
-console.log("사이다 개수 " + this.state.myCokeNum +  "   " + result );
+console.log(" Total " + this.state.myCokeNum +  "   " + result );
    });
  }
 
 render() {
 return (
 <div>
-<h2>우진이가 좋아하는 사이다 구매 페이지</h2>
-<img src={logo} className="App-logo" alt="logo" width="" height="250" />
-<div>사이다 : <button onClick={this.buyCoke}>구매하기</button></div>
-<div>나의 사이다 개수 : {this.state.myCokeNum} <button onClick={this.getMyCoke}>갱신하기</button> </div> 
+   <center>
+<h1><font size="7"> Beverage </font></h1>
+   <img src={logo} className="App-logo" alt="logo" width="" height="450" />  
+   <div><font size="5" >Sprite : </font> <button onClick={this.buyCoke}> <font size="4" >Buy Now</font></button></div>
+   <div><font size="5" >Total : {this.state.myCokeNum}  </font> <button onClick={this.getMyCoke}><font size="4" >Refresh</font></button> </div> 
+   </center>
 </div>
    );
  }
