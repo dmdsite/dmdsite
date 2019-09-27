@@ -15,6 +15,10 @@ $(document).ready(function () {
   $('.form-signin button').click(function(){
     
     event.preventDefault();
+    if($('#inputPassword').val()=="" || $('#inputId').val()==""){
+      alert("빈 칸을 채워주세요");
+      return;
+    }
     $.ajax('/sign_in', {
       'method': 'POST',
       'data': {
@@ -48,7 +52,7 @@ $(document).ready(function () {
       return;
     }
 
-    
+
 
     event.preventDefault();
     $.ajax('/create', {
