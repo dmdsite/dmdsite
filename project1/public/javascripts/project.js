@@ -22,7 +22,13 @@ $(document).ready(function () {
         'password': $('#inputPassword').val()
        },
        'success' : function(data){
-         console.log(data);
+         if(!data.check){
+           alert('id 혹은 비밀번호가 맞지 않습니다');
+         }
+         else{
+           alert('로그인 성공')
+           location.href="/dapp";
+         }
        },
        'error': function(err){
          console.log(err);
@@ -33,11 +39,11 @@ $(document).ready(function () {
 
 
  $('.form-signup button').click(function () {
-    if ($('#password').val()!=$('#confirm_Password').val()) {
+    if ($('#inputPassword').val()!=$('#confirm_Password').val()) {
       window.alert("passwords are not matching!!!!!!!")
       return;
     }
-    else if($('#password').val()=="" || $('#inputId').val()=="" || $('#Eth_Address').val()==""){
+    else if($('#inputPassword').val()=="" || $('#inputId').val()=="" || $('#inputEthAddress').val()==""){
       window.alert("You still have empty space.")
       return;
     }
@@ -55,11 +61,10 @@ $(document).ready(function () {
         console.log(err);
       },
       'success' : function (data) {
-
         console.log(data);
-        if (!data.check)
+         if (!data.check)
           alert("We alreay have this ID. Please try the other one.")
-        else{
+         else{
           console.log("성공");
           alert("가입 성공");
           location.href="/login";
