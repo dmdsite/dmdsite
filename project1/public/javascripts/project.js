@@ -14,7 +14,22 @@ $(document).ready(function () {
 
   $('.form-signin button').click(function(){
     
+    event.preventDefault();
+    $.ajax('/sign_in', {
+      'method': 'POST',
+      'data': {
+        'id': $('#inputId').val(),
+        'password': $('#inputPassword').val()
+       },
+       'success' : function(data){
+         console.log(data);
+       },
+       'error': function(err){
+         console.log(err);
+       }
+
   })
+})
 
 
  $('.form-signup button').click(function () {
