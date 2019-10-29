@@ -16,7 +16,7 @@
     "jade": "~1.11.0",
     "js-alert": "^1.0.4",
     "mongodb": "^3.3.2",
-    "mongoose": "^5.7.0",
+    "mongoose": "^5.7.5",
     "morgan": "~1.9.1",
     "node-popup": "^0.1.14",
     "passport": "^0.4.0",
